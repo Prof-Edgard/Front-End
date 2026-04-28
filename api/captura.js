@@ -29,9 +29,11 @@ function enviarImagemParaServidor(imageDataURL){
     //simular o envio salvando o dado no próprio computador
     console.log("Enviando imagem para o servidor...");
 
-    fetch("/", {
+    const base64String = imageDataURL.split(',')[1];
+
+    fetch("http://10.105.9.112:8000/images", {
         method: "POST",
-        body: JSON.stringify({image: imageDataURL}),
+        body: JSON.stringify({ image: base64String, mime_type: 'image/png' }),
         headers: {
             "Content-Type": "application/json"
         }
@@ -43,7 +45,6 @@ function enviarImagemParaServidor(imageDataURL){
         .catch( erro => {
             console.error("Erro ao enviar a imagem: ", erro);
         })
-
 
 
 }
