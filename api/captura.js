@@ -31,7 +31,7 @@ function enviarImagemParaServidor(imageDataURL){
 
     const base64String = imageDataURL.split(',')[1];
 
-    fetch("http://10.105.9.112:8000/images", {
+    fetch("http://DOP3080-1247456:8000/images", {
         method: "POST",
         body: JSON.stringify({ image: base64String, mime_type: 'image/png' }),
         headers: {
